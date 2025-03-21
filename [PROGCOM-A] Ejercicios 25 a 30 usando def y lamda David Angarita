@@ -1,0 +1,637 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMBjVREFKP7lD682NfLly7H",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Dangarita83/PROGCOM-A/blob/main/%5BPROGCOM-A%5D%20Ejercicios%2025%20a%2030%20usando%20def%20y%20lamda%20David%20Angarita\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**EJERCICIOS LAMBDA**"
+      ],
+      "metadata": {
+        "id": "UX8v81JcTBxT"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "EJERCICIO #25"
+      ],
+      "metadata": {
+        "id": "H6VLnONXTW3J"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "power = lambda base, exponent: (lambda b, e: 1 if e == 0 else b * power(b, e - 1) if e > 0 else 1 / power(b, -e))(base, exponent)\n",
+        "\n",
+        "# Ejemplo de uso\n",
+        "base = float(input(\"Ingresa la base: \"))\n",
+        "exponent = int(input(\"Ingresa el exponente: \"))\n",
+        "print(f\"{base}^{exponent} = {power(base, exponent)}\")\n"
+      ],
+      "metadata": {
+        "id": "_tfVV2ePTXvu",
+        "outputId": "b6ad14a0-06f5-4a5d-80b3-a93b72be0b15",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Ingresa la base: 10\n",
+            "Ingresa el exponente: 2\n",
+            "10.0^2 = 100.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "EJERCICIO # 26\n"
+      ],
+      "metadata": {
+        "id": "imc10Xw3JMcz"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 33,
+      "metadata": {
+        "id": "eDxbxkpbJAIz",
+        "outputId": "ef429707-7bac-4952-aecf-c7b21fc02030",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Introduce un número para la tabla de multiplicar: 10\n",
+            "Tabla de multiplicar del 10: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]\n"
+          ]
+        }
+      ],
+      "source": [
+        "tabla_multiplicar = lambda x: [x * i for i in range(1, 11)]\n",
+        "n_tabla = int(input(\"Introduce un número para la tabla de multiplicar: \"))\n",
+        "print(f\"Tabla de multiplicar del {n_tabla}:\", tabla_multiplicar(n_tabla))\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "EJERCICIO #27\n"
+      ],
+      "metadata": {
+        "id": "iP5Jx_MxJPSZ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "perfecto = lambda n: sum([i for i in range(1, n) if n % i == 0]) == n\n",
+        "n = 10000\n",
+        "print(f\"Números perfectos hasta {n}:\", [i for i in range(1, n) if perfecto(i)])"
+      ],
+      "metadata": {
+        "id": "Z_BGHQY4Jbmf",
+        "outputId": "301c0d7c-a5b3-4b8a-c0e1-ecd02e1765a4",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Números perfectos hasta 10000: [6, 28, 496, 8128]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "EJERCICIO #28"
+      ],
+      "metadata": {
+        "id": "_-2fvTjQJQ6y"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "diamante = lambda n: [\" \" * abs(n - i) + \"*\" * (2 * (n - abs(n - i)) - 1) for i in range(2 * n - 1)]\n",
+        "n = 5\n",
+        "print(\"\\n\".join(diamante(n)))"
+      ],
+      "metadata": {
+        "id": "RLQicV-OJYsF",
+        "outputId": "475a534e-1f8c-430b-bea2-af4059c18757",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "     \n",
+            "    *\n",
+            "   ***\n",
+            "  *****\n",
+            " *******\n",
+            "*********\n",
+            " *******\n",
+            "  *****\n",
+            "   ***\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "EJERCICIO #29"
+      ],
+      "metadata": {
+        "id": "Cc4cvypbJS5N"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "armstrong = lambda num: sum(int(d) ** len(str(num)) for d in str(num)) == num\n",
+        "n = 10000\n",
+        "print(f\"Números Armstrong hasta {n}:\", [i for i in range(1, n) if armstrong(i)])"
+      ],
+      "metadata": {
+        "id": "K67ncOXfJeR1",
+        "outputId": "f8408540-5fd1-45a9-bbf3-eb586ea0cde2",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Números Armstrong hasta 10000: [1, 2, 3, 4, 5, 6, 7, 8, 9, 153, 370, 371, 407, 1634, 8208, 9474]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "EJERCICIO #30\n"
+      ],
+      "metadata": {
+        "id": "aMnFDljDJVFC"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import time\n",
+        "reloj = lambda h, m, s: f\"{h:02}:{m:02}:{s:02}\"\n",
+        "horas, minutos, segundos = 8, 0, 0\n",
+        "while horas < 20:\n",
+        "    print(reloj(horas, minutos, segundos))\n",
+        "    time.sleep(0.1)\n",
+        "    segundos += 1\n",
+        "    if segundos == 60:\n",
+        "        segundos = 0\n",
+        "        minutos += 1\n",
+        "    if minutos == 60:\n",
+        "        minutos = 0\n",
+        "        horas += 1\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 600
+        },
+        "id": "-m8ORRpoJg7V",
+        "outputId": "1cdb9f8a-cd47-4a08-d026-4ecfbbc867e6"
+      },
+      "execution_count": 40,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "08:00:00\n",
+            "08:00:01\n",
+            "08:00:02\n",
+            "08:00:03\n",
+            "08:00:04\n",
+            "08:00:05\n",
+            "08:00:06\n",
+            "08:00:07\n",
+            "08:00:08\n",
+            "08:00:09\n",
+            "08:00:10\n",
+            "08:00:11\n",
+            "08:00:12\n",
+            "08:00:13\n",
+            "08:00:14\n",
+            "08:00:15\n",
+            "08:00:16\n",
+            "08:00:17\n",
+            "08:00:18\n",
+            "08:00:19\n",
+            "08:00:20\n"
+          ]
+        },
+        {
+          "output_type": "error",
+          "ename": "KeyboardInterrupt",
+          "evalue": "",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mKeyboardInterrupt\u001b[0m                         Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-40-2f16a9c449d4>\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0;32mwhile\u001b[0m \u001b[0mhoras\u001b[0m \u001b[0;34m<\u001b[0m \u001b[0;36m20\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m     \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mreloj\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mhoras\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mminutos\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0msegundos\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 6\u001b[0;31m     \u001b[0mtime\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msleep\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m0.1\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      7\u001b[0m     \u001b[0msegundos\u001b[0m \u001b[0;34m+=\u001b[0m \u001b[0;36m1\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      8\u001b[0m     \u001b[0;32mif\u001b[0m \u001b[0msegundos\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0;36m60\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mKeyboardInterrupt\u001b[0m: "
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**EJERCICIOS DEF**"
+      ],
+      "metadata": {
+        "id": "BBdqv5R3TGUs"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "EJERCICIO #25"
+      ],
+      "metadata": {
+        "id": "nyMZi6bQTUx1"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def potencia():\n",
+        "    base = int(input(\"Ingrese la base: \"))\n",
+        "    exponente = int(input(\"Ingrese el exponente: \"))\n",
+        "    resultado = 1\n",
+        "    for _ in range(abs(exponente)):\n",
+        "        resultado *= base\n",
+        "    print(resultado if exponente >= 0 else 1 / resultado)\n",
+        "\n",
+        "potencia()"
+      ],
+      "metadata": {
+        "id": "GCpZQWnhT3yW",
+        "outputId": "3b947af8-c94b-4095-d632-5b08d8979664",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Ingrese la base: 10\n",
+            "Ingrese el exponente: 2\n",
+            "100\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "EJERCICIO #26"
+      ],
+      "metadata": {
+        "id": "UyVv9vALTKgd"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def tablas_multiplicar():\n",
+        "    num = int(input(\"Ingrese el número para la tabla de multiplicar: \"))\n",
+        "    print(f\"Tabla del {num}\")\n",
+        "    for i in range(1, 11):\n",
+        "        print(f\"{num} x {i} = {num * i}\")\n",
+        "    print()\n",
+        "\n",
+        "tablas_multiplicar()"
+      ],
+      "metadata": {
+        "id": "blGWBzbFUiwl",
+        "outputId": "34ab37fe-007b-43c4-f1ca-0f3e84322fa6",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 23,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Ingrese el número para la tabla de multiplicar: 10\n",
+            "Tabla del 10\n",
+            "10 x 1 = 10\n",
+            "10 x 2 = 20\n",
+            "10 x 3 = 30\n",
+            "10 x 4 = 40\n",
+            "10 x 5 = 50\n",
+            "10 x 6 = 60\n",
+            "10 x 7 = 70\n",
+            "10 x 8 = 80\n",
+            "10 x 9 = 90\n",
+            "10 x 10 = 100\n",
+            "\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "EJERCICIO #27"
+      ],
+      "metadata": {
+        "id": "S6-OhEOOTOG5"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def numeros_perfectos():\n",
+        "    n = int(input(\"Ingrese un número límite: \"))\n",
+        "    perfectos = []\n",
+        "    for num in range(1, n + 1):\n",
+        "        suma_divisores = sum([i for i in range(1, num) if num % i == 0])\n",
+        "        if suma_divisores == num:\n",
+        "            perfectos.append(num)\n",
+        "    print(perfectos)\n",
+        "\n",
+        "numeros_perfectos()"
+      ],
+      "metadata": {
+        "id": "Y32SZOEuUxEP",
+        "outputId": "5d9325a4-c2a7-4d61-d3de-72af6b557a17",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 24,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Ingrese un número límite: 1000\n",
+            "[6, 28, 496]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "EJERCICIO #28"
+      ],
+      "metadata": {
+        "id": "DXBYssAATQLb"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def diamante():\n",
+        "    n = int(input(\"Ingrese el tamaño del diamante (impar): \"))\n",
+        "    for i in range(1, n + 1, 2):\n",
+        "        print(\" \" * ((n - i) // 2) + \"*\" * i)\n",
+        "    for i in range(n - 2, 0, -2):\n",
+        "        print(\" \" * ((n - i) // 2) + \"*\" * i)\n",
+        "\n",
+        "diamante()"
+      ],
+      "metadata": {
+        "id": "TFqD0OStU1uq",
+        "outputId": "54a2a3b5-baf5-4c4d-cad8-80355df93def",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 26,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Ingrese el tamaño del diamante (impar): 17\n",
+            "        *\n",
+            "       ***\n",
+            "      *****\n",
+            "     *******\n",
+            "    *********\n",
+            "   ***********\n",
+            "  *************\n",
+            " ***************\n",
+            "*****************\n",
+            " ***************\n",
+            "  *************\n",
+            "   ***********\n",
+            "    *********\n",
+            "     *******\n",
+            "      *****\n",
+            "       ***\n",
+            "        *\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "EJERCICIO #29"
+      ],
+      "metadata": {
+        "id": "LtRowev7TRDp"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def es_armstrong(num):\n",
+        "    suma = sum(int(digito) ** len(str(num)) for digito in str(num))\n",
+        "    return suma == num\n",
+        "\n",
+        "def encontrar_armstrong(hasta):\n",
+        "    return [num for num in range(hasta + 1) if es_armstrong(num)]\n",
+        "\n",
+        "n = int(input(\"Introduce el valor de n: \"))\n",
+        "numeros_armstrong = encontrar_armstrong(n)\n",
+        "print(\"Números Armstrong hasta\", n, \":\", numeros_armstrong)\n"
+      ],
+      "metadata": {
+        "id": "MBGbOPatU5Os",
+        "outputId": "fcc695e2-ce6a-4b8a-af70-4e8ec1ed80b9",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 32,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Introduce el valor de n: 1000\n",
+            "Números Armstrong hasta 1000 : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 153, 370, 371, 407]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "EJERCICIO #30"
+      ],
+      "metadata": {
+        "id": "wYD1X5iETSex"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import time\n",
+        "\n",
+        "def reloj(h, m, s):\n",
+        "    return f\"{h:02}:{m:02}:{s:02}\"\n",
+        "\n",
+        "horas, minutos, segundos = 8, 0, 0\n",
+        "\n",
+        "while horas < 20:\n",
+        "    print(reloj(horas, minutos, segundos))\n",
+        "    time.sleep(0.1)\n",
+        "\n",
+        "    segundos += 1\n",
+        "    if segundos == 60:\n",
+        "        segundos = 0\n",
+        "        minutos += 1\n",
+        "    if minutos == 60:\n",
+        "        minutos = 0\n",
+        "        horas += 1\n"
+      ],
+      "metadata": {
+        "id": "HqkV29uATP0K",
+        "outputId": "ec112861-aa02-4c18-a782-81aa3e5240f8",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 872
+        }
+      },
+      "execution_count": 41,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "08:00:00\n",
+            "08:00:01\n",
+            "08:00:02\n",
+            "08:00:03\n",
+            "08:00:04\n",
+            "08:00:05\n",
+            "08:00:06\n",
+            "08:00:07\n",
+            "08:00:08\n",
+            "08:00:09\n",
+            "08:00:10\n",
+            "08:00:11\n",
+            "08:00:12\n",
+            "08:00:13\n",
+            "08:00:14\n",
+            "08:00:15\n",
+            "08:00:16\n",
+            "08:00:17\n",
+            "08:00:18\n",
+            "08:00:19\n",
+            "08:00:20\n",
+            "08:00:21\n",
+            "08:00:22\n",
+            "08:00:23\n",
+            "08:00:24\n",
+            "08:00:25\n",
+            "08:00:26\n",
+            "08:00:27\n",
+            "08:00:28\n",
+            "08:00:29\n",
+            "08:00:30\n",
+            "08:00:31\n",
+            "08:00:32\n",
+            "08:00:33\n",
+            "08:00:34\n",
+            "08:00:35\n"
+          ]
+        },
+        {
+          "output_type": "error",
+          "ename": "KeyboardInterrupt",
+          "evalue": "",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mKeyboardInterrupt\u001b[0m                         Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-41-fcd79188b9a6>\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      8\u001b[0m \u001b[0;32mwhile\u001b[0m \u001b[0mhoras\u001b[0m \u001b[0;34m<\u001b[0m \u001b[0;36m20\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      9\u001b[0m     \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mreloj\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mhoras\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mminutos\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0msegundos\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 10\u001b[0;31m     \u001b[0mtime\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msleep\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m0.1\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     11\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     12\u001b[0m     \u001b[0msegundos\u001b[0m \u001b[0;34m+=\u001b[0m \u001b[0;36m1\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mKeyboardInterrupt\u001b[0m: "
+          ]
+        }
+      ]
+    }
+  ]
+}
